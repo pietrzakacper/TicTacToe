@@ -1,0 +1,14 @@
+# npm debugging logs
+npm-debug.log*
+# project dependencies
+node_modules
+# OSX folder attributes
+.DS_Store
+# temporary files
+*.tmp
+*~
+public/dist
+package.json
+.eslintrc.json
+gulpfile.js
+node_modules

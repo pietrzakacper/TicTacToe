@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TicTacToe</title>
+	<link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+	<main class="board-container">
+		<div class="board">
+			<canvas id="canvas" width="330" height="330">
+			</canvas>
+			<div class="fields active">
+				<div id="1" class="field not-selected"></div>
+				<div id="2" class="field not-selected"></div>
+				<div id="3" class="field not-selected"></div>
+				<span style="clear: both"></span>
+				<div id="4" class="field not-selected"></div>
+				<div id="5" class="field not-selected"></div>
+				<div id="6" class="field not-selected"></div>
+				<span style="clear: both"></span>
+				<div id="7" class="field not-selected"></div>
+				<div id="8" class="field not-selected"></div>
+				<div id="9" class="field not-selected"></div>
+				<span style="clear: both"></span>
+			</div>
+		</div>
+	</main>
+	<div class="nav-panel">
+		<div id="start" class="start" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
+ unselectable="on"
+ onselectstart="return false;"
+>START</div>
+	</div>
+	<script src="es6/input.js" charset="utf-8"></script>
+	<script src="es6/draw.js" charset="utf-8"></script>
+	<script src="es6/main.js">
+	</script>
+</body>
+
+</html>
