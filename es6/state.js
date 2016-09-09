@@ -71,5 +71,3 @@ class State {
 
 	}
 }
-
-export {State};

@@ -27,7 +27,29 @@ canvas {
 	float: left;
 }
 
-.active > .not-selected.field:hover {
+.choice-bar{
+	text-align: center;
+	color: white;
+	margin-top: 80px;
+	position: relative;
+	width: 330px;
+	height: 150px;
+	visibility: hidden;
+}
+
+.choose{
+	width: 110px;
+	height: 110px;
+	margin-left: 22.5px;
+	margin-right: 22.5px;
+	float:left;
+}
+
+.display{
+	visibility: visible;
+}
+
+.choice-bar.display > .choose:hover, .active > .not-selected.field:hover {
 		background-color: white;
 		opacity: 0.1;
 		cursor: pointer;

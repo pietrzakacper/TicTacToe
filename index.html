@@ -13,7 +13,7 @@
 		<div class="board">
 			<canvas id="canvas" width="330" height="330">
 			</canvas>
-			<div class="fields active">
+			<div id='fields-container'class="fields">
 				<div id="1" class="field not-selected"></div>
 				<div id="2" class="field not-selected"></div>
 				<div id="3" class="field not-selected"></div>
@@ -27,6 +27,12 @@
 				<div id="9" class="field not-selected"></div>
 				<span style="clear: both"></span>
 			</div>
+			<div id="choice-bar" class="choice-bar">
+				<h2 id='choice-bar-text'>CHOOSE: </h2>
+				<div id="o" class="choose"></div>
+				<div id="x" class="choose"></div>
+				<!-- <span style="clear: both;"></span> -->
+			</div>
 		</div>
 	</main>
 	<div class="nav-panel">
@@ -35,8 +41,8 @@
  onselectstart="return false;"
 >START</div>
 	</div>
-	<script src="es6/input.js" charset="utf-8"></script>
-	<script src="es6/draw.js" charset="utf-8"></script>
+	<script src="es6/canvas.js" charset="utf-8"></script>
+	<script src="es6/control.js" charset="utf-8"></script>
 	<script src="es6/main.js">
 	</script>
 </body>
