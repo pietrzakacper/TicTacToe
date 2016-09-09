@@ -30,8 +30,8 @@ class Canvas {
 
 	drawChoicePanel(){
 		let positionY = 80+29+55+22.5;
-		this.drawX(77.5,positionY);
-		this.drawO(22.5+110+22.5+22.5+55,positionY);
+		this.drawX(77.5+5,positionY);
+		this.drawO(220+27.5,positionY);
 	}
 
 	drawGrid(){
