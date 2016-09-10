@@ -2,7 +2,7 @@ class State {
 
 	constructor(oldState) {
 		this.turn = '';
-		this.oMovesCount = 0;
+		this.AImovesCount = 0;
 		this.result = 'still running';
 		this.board = [];
 
@@ -14,14 +14,14 @@ class State {
 				this.board[i] = oldState.board[i];
 			}
 
-			this.oMovesCount = oldState.oMovesCount;
+			this.AImovesCount = oldState.AImovesCount;
 			this.result = oldState.result;
 			this.turn = oldState.turn;
 		}
 	}
 
 	advanceTurn() {
-		this.turn = this.turn === 'X' ? 'O' : 'X';
+		this.turn = this.turn === 'x' ? 'o' : 'x';
 	}
 
 	getEmptyCellsIndicies() {
@@ -34,7 +34,7 @@ class State {
 		return indexes;
 	}
 
-	isGameEnd() {
+	isTerminal() {
 		const B = this.board;
 
 		//check rows

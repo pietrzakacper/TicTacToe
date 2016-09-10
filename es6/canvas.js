@@ -50,4 +50,7 @@ class Canvas {
 		this.ctx.lineWidth = initialWidth;
 	}
 
+	clear(){
+		this.ctx.clearRect(0,0,330,330);
+	}
 }

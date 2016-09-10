@@ -14,35 +14,41 @@
 			<canvas id="canvas" width="330" height="330">
 			</canvas>
 			<div id='fields-container'class="fields">
-				<div id="1" class="field not-selected"></div>
-				<div id="2" class="field not-selected"></div>
-				<div id="3" class="field not-selected"></div>
+				<div id="0" class="field"></div>
+				<div id="1" class="field"></div>
+				<div id="2" class="field"></div>
 				<span style="clear: both"></span>
-				<div id="4" class="field not-selected"></div>
-				<div id="5" class="field not-selected"></div>
-				<div id="6" class="field not-selected"></div>
+				<div id="3" class="field"></div>
+				<div id="4" class="field"></div>
+				<div id="5" class="field"></div>
 				<span style="clear: both"></span>
-				<div id="7" class="field not-selected"></div>
-				<div id="8" class="field not-selected"></div>
-				<div id="9" class="field not-selected"></div>
+				<div id="6" class="field"></div>
+				<div id="7" class="field"></div>
+				<div id="8" class="field"></div>
 				<span style="clear: both"></span>
 			</div>
 			<div id="choice-bar" class="choice-bar">
-				<h2 id='choice-bar-text'>CHOOSE: </h2>
-				<div id="o" class="choose"></div>
+				<h2 id="choice-bar-text"  style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
+		 unselectable="on"
+		 onselectstart="return false;">CHOOSE: </h2>
 				<div id="x" class="choose"></div>
-				<!-- <span style="clear: both;"></span> -->
+				<div id="o" class="choose"></div>
+				<span style="clear: both;"></span>
 			</div>
 		</div>
 	</main>
 	<div class="nav-panel">
-		<div id="start" class="start" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
+		<div id="reset" class="reset" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
  unselectable="on"
  onselectstart="return false;"
->START</div>
+>RESET</div>
 	</div>
 	<script src="es6/canvas.js" charset="utf-8"></script>
 	<script src="es6/control.js" charset="utf-8"></script>
+	<script src="es6/state.js"></script>
+	<script src="es6/game.js"></script>
+	<script src="es6/ai.js"></script>
+	<script src="es6/ui.js"></script>
 	<script src="es6/main.js">
 	</script>
 </body>
