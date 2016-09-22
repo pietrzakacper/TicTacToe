@@ -35,24 +35,25 @@ function initGame() {
 	globalManagers.canvas = new Canvas(canvas);
 	globalManagers.ui = new UI();
 	globalManagers.ui.showChoicePanel();
+	globalGameInfo.board = ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'];
 }
 
 function handleFieldClick(event) {
 	const id = event.target.id;
-	const next = new State(globalManagers.game.currentState);
-	if(next.board[id] !== 'E')return;
-	if(globalManagers.game.status === 'running' && globalManagers.game.currentState.turn === globalGameInfo.playerCharacter){
-		next.board[id]=globalGameInfo.playerCharacter;
-		globalManagers.ui.drawMove(id,globalGameInfo.playerCharacter);
-		next.advanceTurn();
-		globalManagers.game.advanceTo(next);
+	if (globalGameInfo.board[id] !== 'e' || AI.isTerminate(globalGameInfo.board)) return;
+	movePlayer(id);
+	globalManagers.ui.disableBoard();
+	if (!AI.isTerminate(globalGameInfo.board)) {
+		moveAI();
+		if(!AI.isTerminate(globalGameInfo.board)){
+			globalManagers.ui.enableBoard();
+		}
 	}
-	globalManagers.ui.disableField(id);
 }
 
 function chooseCharacter(event) {
 	let id = event.target.id;
-	if(id==='x') {
+	if (id === 'x') {
 		globalGameInfo.playerCharacter = 'x';
 		globalGameInfo.AICharacter = 'o';
 	} else {
@@ -63,15 +64,31 @@ function chooseCharacter(event) {
 	startGame();
 }
 
-function startGame(){
+function startGame() {
 	globalManagers.ui.showGrid();
-	globalManagers.ai = new AI();
-	globalManagers.game=new Game(globalManagers.ai);
-	globalManagers.game.start();
-
+	if (globalGameInfo.playerCharacter === 'o') {
+		moveAI();
+	}
 }
 
-function resetGame(){
+function movePlayer(id) {
+	globalGameInfo.board[id]=globalGameInfo.playerCharacter;
+	globalManagers.ui.drawMove(id,globalGameInfo.playerCharacter);
+}
+
+function moveAI() {
+	const data = {
+		aiCharacter: globalGameInfo.AICharacter,
+		playerCharacter: globalGameInfo.playerCharacter,
+		startingCharacter: 'x',
+		board: globalGameInfo.board
+	};
+	const id = AI.getAIAction(data);
+	globalGameInfo.board[id] = globalGameInfo.AICharacter;
+	globalManagers.ui.drawMove(id, globalGameInfo.AICharacter);
+}
+
+function resetGame() {
 	globalGameInfo = {
 		isPanelVisible: false
 	};

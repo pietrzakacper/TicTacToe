@@ -56,6 +56,7 @@ class UI {
 		case 'o':
 			globalManagers.canvas.drawO(positionX,positionY);
 		}
+		globalManagers.ui.disableField(indexPosition);
 	}
 
 	switchViewTo(nameOfState){
@@ -69,12 +70,9 @@ class UI {
 		}
 	}
 	disableBoard(){
-		console.log('Board disabled');
 		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className.replace(' active', ' ');
-		globalManagers.game.currentState.board.forEach(element=>{console.log(element);});
 	}
 	enableBoard(){
-		console.log('Board enabled');
 		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className + ' active';
 	}
 }
