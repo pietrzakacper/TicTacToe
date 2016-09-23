@@ -38,14 +38,23 @@ function initGame() {
 	globalGameInfo.board = ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'];
 }
 
+function resetGame() {
+	globalGameInfo = {
+		isPanelVisible: false
+	};
+	globalManagers.ui.hideGrid();
+	globalManagers.ui.hideChoicePanel();
+	initGame();
+}
+
 function handleFieldClick(event) {
 	const id = event.target.id;
-	if (globalGameInfo.board[id] !== 'e' || AI.isTerminate(globalGameInfo.board)) return;
+	if (globalGameInfo.board[id] !== 'e' || AI.isTerminated(globalGameInfo.board)) return;
 	movePlayer(id);
 	globalManagers.ui.disableBoard();
-	if (!AI.isTerminate(globalGameInfo.board)) {
+	if (!AI.isTerminated(globalGameInfo.board)) {
 		moveAI();
-		if(!AI.isTerminate(globalGameInfo.board)){
+		if (!AI.isTerminated(globalGameInfo.board)) {
 			globalManagers.ui.enableBoard();
 		}
 	}
@@ -72,8 +81,8 @@ function startGame() {
 }
 
 function movePlayer(id) {
-	globalGameInfo.board[id]=globalGameInfo.playerCharacter;
-	globalManagers.ui.drawMove(id,globalGameInfo.playerCharacter);
+	globalGameInfo.board[id] = globalGameInfo.playerCharacter;
+	globalManagers.ui.drawMove(id, globalGameInfo.playerCharacter);
 }
 
 function moveAI() {
@@ -83,17 +92,7 @@ function moveAI() {
 		startingCharacter: 'x',
 		board: globalGameInfo.board
 	};
-	const id = AI.getAIAction(data);
+	const id = AI.getAIMove(data);
 	globalGameInfo.board[id] = globalGameInfo.AICharacter;
 	globalManagers.ui.drawMove(id, globalGameInfo.AICharacter);
 }
-
-function resetGame() {
-	globalGameInfo = {
-		isPanelVisible: false
-	};
-	globalManagers.ui.hideGrid();
-	globalManagers.ui.hideChoicePanel();
-	initGame();
-}
-//----------------
