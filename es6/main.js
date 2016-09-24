@@ -51,12 +51,18 @@ function handleFieldClick(event) {
 	const id = event.target.id;
 	if (globalGameInfo.board[id] !== 'e' || AI.isTerminated(globalGameInfo.board)) return;
 	movePlayer(id);
-	globalManagers.ui.disableBoard();
+	globalManagers.ui.switchViewTo('ai');
 	if (!AI.isTerminated(globalGameInfo.board)) {
-		moveAI();
-		if (!AI.isTerminated(globalGameInfo.board)) {
-			globalManagers.ui.enableBoard();
-		}
+		setTimeout(() => {
+			moveAI();
+			if (!AI.isTerminated(globalGameInfo.board)) {
+				globalManagers.ui.switchViewTo('human');
+			} else {
+				endGame();
+			}
+		}, 800);
+	} else {
+		endGame();
 	}
 }
 
@@ -76,8 +82,11 @@ function chooseCharacter(event) {
 function startGame() {
 	globalManagers.ui.showGrid();
 	if (globalGameInfo.playerCharacter === 'o') {
-		globalManagers.ui.disableBoard();
-		setTimeout(()=>{moveAI(); globalManagers.ui.enableBoard();}, 50);
+		globalManagers.ui.switchViewTo('ai');
+		setTimeout(() => {
+			moveAI();
+			globalManagers.ui.switchViewTo('human');
+		}, 50);
 	}
 }
 
@@ -96,4 +105,15 @@ function moveAI() {
 	const id = AI.getAIMove(data);
 	globalGameInfo.board[id] = globalGameInfo.AICharacter;
 	globalManagers.ui.drawMove(id, globalGameInfo.AICharacter);
+}
+
+function endGame() {
+	const gameState = AI.getStateOfGame(globalGameInfo.board);
+	let uiState = '';
+	if (gameState !== 'draw') {
+		uiState = (globalGameInfo.playerCharacter === gameState.charAt(0)) ? 'player-won' : 'ai-won';
+	} else {
+		uiState = 'draw';
+	}
+	globalManagers.ui.switchViewTo(uiState);
 }

@@ -11,8 +11,17 @@ body {
     border-radius: 3px;
     padding: 10px;
     width: 330px;
-    height: 330px;
+    height: 380px;
 			box-shadow: 5px 5px rgba(0, 0, 0, 0.87);
+}
+
+.msg-bar{
+	font-family:monospace;
+	font-weight: bolder;
+	font-size: 35px;
+	text-align: center;
+	color: white;
+	height: 50px;
 }
 
 canvas {
@@ -38,6 +47,7 @@ canvas {
 }
 
 .choose{
+	margin-top: 50px;
 	width: 110px;
 	height: 110px;
 	margin-left: 27.5px;
