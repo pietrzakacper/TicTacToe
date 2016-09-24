@@ -49,10 +49,10 @@ function resetGame() {
 
 function handleFieldClick(event) {
 	if(!globalManagers.ui.playerCanClick)return;
+	globalManagers.ui.switchViewTo('ai');
 	const id = event.target.id;
 	if (globalGameInfo.board[id] !== 'e' || AI.isTerminated(globalGameInfo.board)) return;
 	movePlayer(id);
-	globalManagers.ui.switchViewTo('ai');
 	if (!AI.isTerminated(globalGameInfo.board)) {
 		setTimeout(() => {
 			moveAI();
@@ -88,6 +88,8 @@ function startGame() {
 			moveAI();
 			globalManagers.ui.switchViewTo('human');
 		}, 50);
+	} else{
+		globalManagers.ui.switchViewTo('human');
 	}
 }
 

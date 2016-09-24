@@ -6,23 +6,23 @@ class UI {
 		Array.from(globalsDOM.fields).forEach(
 			element => {
 				this.disableField(element.id);
-				element.className = element.className + ' not-selected';
+				element.classList.add('not-selected');
 			}
 		);
 		globalManagers.canvas.clear();
-		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className + ' active';
+		globalsDOM.fieldsContainer.classList.add('active');
 		globalManagers.canvas.drawGrid();
 	}
 
 	hideGrid() {
-		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className.replace(/active/g, ' ');
+		globalsDOM.fieldsContainer.classList.remove('active');
 		globalManagers.canvas.clear();
 	}
 
 	showChoicePanel() {
 		globalManagers.canvas.drawChoicePanel();
 		const choiceField = document.getElementById('choice-bar');
-		choiceField.className = choiceField.className + ' display';
+		choiceField.classList.add('display');
 		const msgBar = document.getElementById('msg-bar');
 		msgBar.innerText = 'CHOOSE: ';
 		globalGameInfo.isPanelVisible = true;
@@ -31,7 +31,7 @@ class UI {
 	hideChoicePanel() {
 		globalManagers.canvas.clear();
 		const choiceField = document.getElementById('choice-bar');
-		choiceField.className = choiceField.className.replace(' display', ' ');
+		choiceField.classList.remove('display');
 		const msgBar = document.getElementById('msg-bar');
 		msgBar.innerText = ' ';
 		globalGameInfo.isPanelVisible = false;
@@ -39,7 +39,7 @@ class UI {
 
 	disableField(id) {
 		const fieldClicked = document.getElementById(id);
-		fieldClicked.className = fieldClicked.className.replace(' not-selected', ' ');
+		fieldClicked.classList.remove('not-selected');
 	}
 
 	drawMove(indexPosition, turn) {
@@ -94,11 +94,11 @@ class UI {
 	}
 
 	disableBoard() {
-		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className.replace(' active', ' ');
+		globalsDOM.fieldsContainer.classList.remove('active');
 		this.playerCanClick = false;
 	}
 	enableBoard() {
-		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className + ' active';
+		globalsDOM.fieldsContainer.classList.add('active');
 		this.playerCanClick = true;
 	}
 }
