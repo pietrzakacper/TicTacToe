@@ -48,6 +48,7 @@ function resetGame() {
 }
 
 function handleFieldClick(event) {
+	if(!globalManagers.ui.playerCanClick)return;
 	const id = event.target.id;
 	if (globalGameInfo.board[id] !== 'e' || AI.isTerminated(globalGameInfo.board)) return;
 	movePlayer(id);

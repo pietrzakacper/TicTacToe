@@ -1,5 +1,7 @@
 class UI {
-
+	constructor(){
+		this.playerCanClick = true;
+	}
 	showGrid() {
 		Array.from(globalsDOM.fields).forEach(
 			element => {
@@ -93,8 +95,10 @@ class UI {
 
 	disableBoard() {
 		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className.replace(' active', ' ');
+		this.playerCanClick = false;
 	}
 	enableBoard() {
 		globalsDOM.fieldsContainer.className = globalsDOM.fieldsContainer.className + ' active';
+		this.playerCanClick = true;
 	}
 }
