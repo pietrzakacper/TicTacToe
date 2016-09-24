@@ -76,7 +76,8 @@ function chooseCharacter(event) {
 function startGame() {
 	globalManagers.ui.showGrid();
 	if (globalGameInfo.playerCharacter === 'o') {
-		moveAI();
+		globalManagers.ui.disableBoard();
+		setTimeout(()=>{moveAI(); globalManagers.ui.enableBoard();}, 50);
 	}
 }
 
